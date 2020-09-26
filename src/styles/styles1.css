@@ -1,257 +1,89 @@
 /* header */
-
 .fonttext {
-    font-size: 1.2rem;
-    padding-top: 10px;
-    color: #ffffff;
-  }
-  .navbar-default
-  {
-    background-color: #180D44;
-    border-color: #180D44;
-  }
-  .navLogo
-  {
-    transition: all 1s ease-in-out;
-  }
-  .navLogo:hover{
-    transform: scale(1.9);
-  }
-  /* Dasboard */
-.containerr {
-  width: 100%;
-  overflow: hidden;
-  padding: 100px;
+  font-size: 1.2rem;
+  padding-top: 8px;
+  color: #ffffff;
+}
+.butdesign {
+  color: #ffffff;
+  font-weight: bold;
+  border-width: 2px;
+  border-radius: 1px;
+  border-color: #180d44;
+  font-size: 12px;
+}
+.navbar {
+  background-color: #180d44;
+  border-color: #180d44;
+  position: sticky;
   display: flex;
-  flex-direction: row;
-}
-.nameofcompany {
-  margin-top: 40px;
-  text-align: center;
-  font-size: 40px;
-  color: #f66f6f;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px #493b3b;
-}
-.PurchaseBox {
-  float: left;
-  width: 22rem;
-  height: 12rem;
-  border-radius: 30px;
-  position: relative;
-  box-shadow: 2px 2px 3px gray;
-  background-color: #f07272;
-  text-shadow: 1px 1px 3px #493b3b;
-}
-.purchaselogo {
-  background-image: url("../truck1.png");
-  width: 120px;
-  height: 120px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  margin-top: 10px;
-  margin-left: 120px;
-}
-.purText
-{
-  margin-top: 130px;
-  margin-left: 80px;
-  font-size: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
-}
-.text3
-{
-  margin-left: 120px;
-}
-.ProductionBox {
-  margin: 0 auto;
-  width: 22rem;
-  height: 12rem;
-  border-radius: 30px;
-  box-shadow: 2px 2px 3px gray;
-  position: relative;
-  background-color: #98a5ff;
 }
 
-.productionlogo {
-  background-image: url("../prologo.png");
-  width: 160px;
-  height: 110px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 10px;
-  left: 105px;
+@media screen and (max-width: 1220px) {
+.navbar{
+  display: grid;
 }
-.sellingBox {
-  width: 22rem;
-  height: 12rem;
-  float: right;
-  border-radius: 30px;
-  box-shadow: 2px 2px 3px gray;
-  position: relative;
-  background-color: #8bdbc1;
-}
-.sellinglogo {
-  background-image: url("../truck2.png");
-  width: 120px;
-  height: 120px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 10px;
-  left: 125px;
 }
 
-
-
-/*Start login */
-.authBox {
-  width: 1200px;
-  overflow: hidden;
-  margin: 20px auto;
-  /* display: flex;
+.form-inline {
+  margin-bottom: 0px;
+}
+.header_middle {
+  display: flex;
+  float: 1;
   justify-content: center;
-  align-items: center; */
 }
-.leftBox {
-  width: 600px;
-  height: 580px;
-  float: left;
-  position: relative;
-  display: block;
-  text-shadow: 1px 3px 3px #493b3b;
- 
+.header_option {
+  color: gray;
 }
-.bgOrange {
-  width: 100%;
-  height: 100%;
-  background-color: #f66f6f;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
-}
-.bgImage {
-  background-image: url("../cotton.jpg");
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
-  opacity: 0.3;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.bgImagelogo {
-  background-image: url("../logo1.png");
-  width: 160px;
-  height: 160px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;;
-  top: 120px;
-  left: 215px;
-  transition: all 1s ease-in-out;
-}
-.bgImagelogo:hover{
-  transform: scale(1.6);
-}
-.bgText {
-  font-size: 48px;
-  position: absolute;
-  color: #ffffff;
-  font-family: 'Segoe Print';
-}
-.bgText.bold {
-  font-weight: bold;
-}
-.bgText.style1 {
-  top: 280px;
-  left: 198px;
-}
-.bgText.style2 {
-  top: 340px;
-  left: 80px;
-  font-size:58px;
-  
-}
-.rightBox {
-  width: 600px;
-  height: 580px;
-  float: right;
-  border: 1px solid #f66f6f;
-  border-bottom-right-radius: 40px;
-  border-top-right-radius: 40px;
-  background-color: #ffffff;
- 
-}
-.box {
-  width: 300px;
-  height: 45px;
-  margin: 70px  auto;
-}
-.titleAuth {
-  font-size: 32px;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 30px;
-  
-  color: #f66f6f;
-}
-.inputBox {
-  width: 330px;
-  height: 32px;
-  border-bottom: 2px solid #d8d8d8;
-  margin-top: 80px;
-  /* margin-bottom: 20px; */
-}
-.inputS {
-  width: 100%;
-  height: 100%;
-  font-size: 18px;
-  font-weight: bold;
-  color: #37353f;
-  text-indent: 10px;
-  border: 0;
-  outline: none;
-}
-.inputS::-webkit-input-placeholder {
-  color: #f66f6f;
-  opacity: 0.6;
-
-}
-.contentBox {
-  overflow: hidden;
-  height: 42px;
-  margin-bottom: 50px;
-}
-.btnAuth {
-  width: 180px;
-  height: 37px;
-  color: #ffffff;
-  background-color:#f66f6f;
-  text-align:center;
-  border-radius: 90px;
-  line-height:37px;
-  font-size: 20px;
+.header_option {
+  display: flex;
+  align-items: center;
+  padding: 0px 30px;
   cursor: pointer;
 }
-@media screen and (max-width:1008px){
-  .authBox{
-    width: 100%;
-  }
-  .leftBox
-  {   
-    display: none;
-  }
-  .rightBox {
-    width: 100%;
-    float: initial;
-    border:0;
-  }
+.header_option:hover {
+  background-color: #6b7580;
+  border-radius: 10px;
+  align-items: center;
+  padding: 10px 30px;
+  border-bottom: none;
+}
+.header_info {
+  display: flex;
+  align-items: center;
+}
+.header_info > h4 {
+  margin-left: 20px;
+  margin-right: 0px;
+  color: black;
+  width: bold;
+}
+.slideBtn {
+  margin-top: 20px;
+  margin-right: 20px;
+  float: right;
+  width: 20px;
+  height: 30px;
+}
+.LogOutBtn {
+  margin-top: 600px;
+  margin-left: 20px;
+  width: 250px;
+}
+.navLogo {
+  transition: all 1s ease-in-out;
+}
+.navLogo:hover {
+  transform: scale(1.9);
+}
+
+/* loader */
+.loader {
+  width: 12px;
+  height: 12px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 2px 2px 3px gray;
 }

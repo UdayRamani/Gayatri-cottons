@@ -1,0 +1,22 @@
+.showdatevise
+{
+    background-color: rgb(117, 32, 32);
+    text-align: center;
+    margin: 10px;
+    border-radius: 20px;
+}
+.bro
+{   
+    margin-top: 20px;
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.name
+{
+    color: black;
+    font-size: 30px;
+    margin-left: 20px;
+}

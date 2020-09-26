@@ -1,56 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./components/Home";
-import Base from "./components/Base";
-import Toppings from "./components/Toppings";
-import Order from "./components/Order";
-import Login from "./components/Login";
-import fire from "./config/fire";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import Home from "./screens/Home";
+import Login from "./screens/LoginE";
+import Production from "./screens/production";
+import Selling from "./screens/Selling";
+import Purchase from "./screens/Purchase";
+import Showpurchase from "./screens/Showpurchase";
+
+
+import { AuthProvider } from "./config/Auth";
+import PrivateRoute from "./config/PrivateRoute";
+
 
 function App() {
   // loginsetup
-
-  const [pizza, setPizza] = useState({ base: "", toppings: [] });
-
-  const addBase = (base) => {
-    setPizza({ ...pizza, base });
-  };
-
-  const addTopping = (topping) => {
-    let newToppings;
-    if (!pizza.toppings.includes(topping)) {
-      newToppings = [...pizza.toppings, topping];
-    } else {
-      newToppings = pizza.toppings.filter((item) => item !== topping);
-    }
-    setPizza({ ...pizza, toppings: newToppings });
-  };
-
   return (
     <>
-     
       {/* <Header/> */}
-      <Switch>
-        <Route path="/base">
-          <Header />
-          <Base addBase={addBase} pizza={pizza} />
-        </Route>
-        <Route path="/toppings">
-          <Header />
-          <Toppings addTopping={addTopping} pizza={pizza} />
-        </Route>
-        <Route path="/order">
-          <Header />
-          <Order pizza={pizza} />
-        </Route>
-        <Route path="/home">
-          <Home  />
-        </Route>
-        <Route path="/">
-        <Login />
-        </Route>
-      </Switch>
+      <Router>
+        <Switch>
+          <Route path="/purchase" exact component={Purchase} />
+          <Route path="/production" exact component={Production} />
+          <Route path="/selling" exact component={Selling} />
+          <Route path="/showpurchase" exact component={Showpurchase} />
+          <AuthProvider>
+            <PrivateRoute path="/" component={Home}></PrivateRoute>
+            <Route path="/login" component={Login}></Route>
+          </AuthProvider>
+        </Switch>
+      </Router>
     </>
   );
 }
