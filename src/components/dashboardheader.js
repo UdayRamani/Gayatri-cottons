@@ -26,13 +26,7 @@ function dashboardheader() {
           />
         </div>
         <div class="form-inline">
-        <Button
-            variant="secondary"
-          
-            onClick={() => fire.auth().signOut()}
-          >
-            Log Out
-          </Button>
+
         </div>
       </nav>
     </div>

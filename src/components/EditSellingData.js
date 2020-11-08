@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { db } from "../config/fire";
-function Selling() {
-  const [selldate, setSellDate] = useState("");
-  const [billnameInput, setBillNameInput] = useState("");
-  const [partynameInput, setPartyNameInput] = useState("");
-  const [weightInput, setWeightInput] = useState("");
-  const [priceInput, setPriceInput] = useState("");
-  const [rupeeInput, setRupeeInput] = useState("");
-  const [brokernameInput, setBrokerNameInput] = useState("");
+import { positions, transitions, types } from "react-alert";
+import { useAlert } from "react-alert";
+import { MDBContainer, MDBAlert } from "mdbreact";
 
+function EditSellingData({ Sellings, SellingID }) {
+  const [selldate, setSellDate] = useState(Sellings.sellingdate);
+  const [billnameInput, setBillNameInput] = useState(Sellings.billNo);
+  const [partynameInput, setPartyNameInput] = useState(Sellings.partiname);
+  const [weightInput, setWeightInput] = useState(Sellings.weight);
+  const [priceInput, setPriceInput] = useState(Sellings.price);
+  const [rupeeInput, setRupeeInput] = useState(Sellings.totalrupee);
+  const [brokernameInput, setBrokerNameInput] = useState(Sellings.brokername);
+  const alertss = () => {
+    alert("Your Data Is Updated");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    db.collection("Selling").add({
+    
+    db.collection("Selling").doc(SellingID).update({
       sellingdate: selldate,
       billNo: billnameInput,
       partiname: partynameInput,
@@ -21,14 +28,13 @@ function Selling() {
       totalrupee: rupeeInput,
       brokername: brokernameInput,
     });
-
+    alertss();
     setSellDate("");
     setBillNameInput("");
     setPartyNameInput("");
     setWeightInput("");
     setPriceInput("");
     setRupeeInput("");
-
     setBrokerNameInput("");
   };
 
@@ -42,7 +48,8 @@ function Selling() {
   return (
     <div>
       <Header />
-      <div className="header">SELLING</div>
+
+      <div className="header">EDIT SELLING DATA</div>
       <div className="purchase">
         <div className="purchasefrom">
           <form>
@@ -58,7 +65,6 @@ function Selling() {
             <input
               type="text"
               className="inputitem"
-              placeholder={"0012"}
               value={billnameInput}
               onChange={(e) => setBillNameInput(e.target.value)}
               required
@@ -66,7 +72,6 @@ function Selling() {
             <label className="labletext">PartyName</label>
             <input
               className="inputitem"
-              placeholder="abcdef"
               value={partynameInput}
               onChange={(e) => setPartyNameInput(e.target.value)}
             />
@@ -74,21 +79,18 @@ function Selling() {
             <input
               type="number"
               className="inputitem"
-              placeholder="1000 kilos"
               value={weightInput}
               onChange={(e) => setWeightInput(e.target.value)}
             />
             <label className="labletext">Price</label>
             <input
               className="inputitem"
-              placeholder="0000000"
               value={priceInput}
               onChange={(e) => setPriceInput(e.target.value)}
             />
             <label className="labletext">Total-Rupee</label>
             <input
               className="inputitem"
-              placeholder="0000000"
               value={rupeeInput}
               onChange={(e) => setRupeeInput(e.target.value)}
             />
@@ -96,7 +98,6 @@ function Selling() {
             <label className="labletext">BrokerName</label>
             <input
               className="inputitem"
-              placeholder="abcdef"
               value={brokernameInput}
               onChange={(e) => setBrokerNameInput(e.target.value)}
             />
@@ -105,7 +106,7 @@ function Selling() {
               onClick={handleSubmit}
               class="btn btn-outline-info"
             >
-              Submit
+              UPDATE
             </button>
           </form>
         </div>
@@ -114,4 +115,4 @@ function Selling() {
   );
 }
 
-export default Selling;
+export default EditSellingData;

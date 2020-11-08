@@ -5,6 +5,27 @@
   align-items: center;
   padding: 15px;
 }
+.serchtextbox{
+  width: 300px;
+  margin-left: 20px;
+  float: right;
+}
+.serchtextboxparti
+{
+  width: 300px;
+  float: left;
+}
+.listserchBoxpar{
+  padding: 10px;
+  background-color: #3f51b5
+}
+.searchBoxe
+{
+  margin-top: 20px;
+  background-color: #180D44;
+  height: 80px;
+ padding: 20px;
+}
 .header{
   margin-top: 20px;
   font-size: 60px;
@@ -19,6 +40,7 @@
   padding: 30px;
   background-color: #ffffff;
   border-radius: 20px;
+  
   box-shadow: 4px 5px 7px -7px rgba(0, 0, 0, 0.75);
 }
 .purchasefrom > form {

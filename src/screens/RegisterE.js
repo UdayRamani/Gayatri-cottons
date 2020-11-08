@@ -58,7 +58,6 @@ const RegisterE = ({ history }) => {
               <br/>
               <br/>
                 <Button type="submit" variant="secondary" className={"btnAuth"}>Sign Up</Button>
-            
             </form>
           </div>
         </div>

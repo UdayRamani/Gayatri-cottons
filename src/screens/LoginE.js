@@ -51,6 +51,7 @@ const Login = ({ history }) => {
                   name="email"
                   className={"inputS"}
                   onFocus
+                  autoComplete="off"
                   required
                   type="email"
                   placeholder={"YOUR NAME...."}

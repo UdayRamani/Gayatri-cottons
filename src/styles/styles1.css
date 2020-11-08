@@ -1,8 +1,43 @@
+/* Search*/
+.donee{
+  color: #12fd3a;
+}
+.headersearch{
+  margin-top: 20px;
+  font-size: 60px;
+  text-decoration: underline;
+  text-align: center;
+  color: #180D44;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lidatasearch{
+  font-size: 30px;
+  text-align: center;
+  color: #fcfcfc;
+  flex-direction: column;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.listserchBox{
+  background-color: #180d44;
+  padding: 20px;
+}
 /* header */
 .fonttext {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding-top: 8px;
+  margin-left: 20px;
+  margin-top: 4px;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 3px 1px 3px #3922a1;
   color: #ffffff;
+}
+.iconsheader{
+    font-size: 80px;
+    color: white;
 }
 .butdesign {
   color: #ffffff;
@@ -12,17 +47,18 @@
   border-color: #180d44;
   font-size: 12px;
 }
-.navbar {
-  background-color: #180d44;
-  border-color: #180d44;
-  position: sticky;
-  display: flex;
-}
-
-@media screen and (max-width: 1220px) {
-.navbar{
+.texticon {
+  color: #3f51b5;
   display: grid;
+  margin: 3px;
 }
+.texticon:hover {
+  color: #ffffff;
+}
+.navbar {
+  background-color: #3f51b5;
+  border-color: #3f51b5;
+
 }
 
 .form-inline {
@@ -43,7 +79,7 @@
   cursor: pointer;
 }
 .header_option:hover {
-  background-color: #6b7580;
+  background-color: #4196ebb7;
   border-radius: 10px;
   align-items: center;
   padding: 10px 30px;
@@ -87,3 +123,21 @@
   background: #ffffff;
   box-shadow: 2px 2px 3px gray;
 }
+
+@media screen and (max-width: 1031px) {
+
+.header_middle {
+ display: contents;
+ margin: 20px;
+ justify-content: space-around;
+}
+.header_option{
+  display:grid;
+  margin: 20px;
+  padding: 10px;
+}
+.texticon{
+  display: none;
+}
+}
+

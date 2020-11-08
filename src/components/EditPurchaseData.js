@@ -1,40 +1,41 @@
-import { TextField } from "@material-ui/core";
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { db } from "../config/fire";
+import Databses from "../screens/Databses";
 import "../styles/Purchase.css";
-function Purchase() {
+function EditPurchaseData({ Purchases, PurchaseID }) {
+  const [dateInput, setDate] = useState(Purchases.date);
+  const [truckInput, settruckInput] = useState(Purchases.trucknumber);
+  const [weightInput, setWeightInput] = useState(Purchases.weight);
+  const [priceInput, setPriceInput] = useState(Purchases.price);
+  const [rupeeInput, setRupeeInput] = useState(Purchases.totalrupee);
+  const [partynameInput, setPartyNameInput] = useState(Purchases.partiname);
+  const [farmerNameInput, setFarmerNAmeInput] = useState(Purchases.farmername);
+  const [DisAmountInput, setDisAmountInput] = useState(Purchases.disamount);
+  const [paymentInput, setPaymentInput] = useState(Purchases.paymentdate);
+  const [brokernameInput, setBrokerNameInput] = useState(Purchases.brokername);
+  const [outWeightInput, setoutWeight] = useState(Purchases.outweight);
 
- 
-  const [date, setDate] = useState("");
-  const [truckInput, settruckInput] = useState("");
-  const [weightInput, setWeightInput] = useState("");
-  const [priceInput, setPriceInput] = useState("");
-  const [rupeeInput, setRupeeInput] = useState("");
-  const [partynameInput, setPartyNameInput] = useState("");
-  const [farmerNameInput, setFarmerNAmeInput] = useState("");
-  const [DisAmountInput, setDisAmountInput] = useState("");
-  const [paymentInput, setPaymentInput] = useState("");
-  const [brokernameInput, setBrokerNameInput] = useState("");
-  
   const handleSubmit = (e) => {
+    const alertss = () => {
+      alert("Your Data Is Updated");
+    };
     e.preventDefault();
-
-    db.collection("Purchase").add({
-      date:date,
-      trucknumber:truckInput,
-      weight:weightInput,
-      price:priceInput,
-      totalrupee:rupeeInput,
-      partiname:partynameInput,
-      farmername:farmerNameInput,
-      disamount:DisAmountInput,
-      paymentdate:paymentInput,
-      brokername:brokernameInput
+    db.collection("Purchase").doc(PurchaseID).update({
+      date: dateInput,
+      trucknumber: truckInput,
+      weight: weightInput,
+      price: priceInput,
+      totalrupee: rupeeInput,
+      partiname: partynameInput,
+      farmername: farmerNameInput,
+      disamount: DisAmountInput,
+      paymentdate: paymentInput,
+      brokername: brokernameInput,
+      outweight: outWeightInput,
     });
-
+    alertss();
     setDate("");
     settruckInput("");
     setWeightInput("");
@@ -45,24 +46,22 @@ function Purchase() {
     setDisAmountInput("");
     setPaymentInput("");
     setBrokerNameInput("");
+    setoutWeight("");
   };
-
 
   return (
     <div>
       <Header />
-
-      <div className="header">PURCHASE</div>
-
-     
+      <div className="header">EDIT PURCHASE DATA</div>
       <div className="purchase">
         <div className="purchasefrom">
           <form>
-          <label className="labletext">Date</label>
+            <label className="labletext">Date</label>
             <input
               type="date"
               className="inputitem"
-              value={date}
+              value={dateInput}
+              onFocus
               onChange={(e) => setDate(e.target.value)}
               required
             />
@@ -70,52 +69,67 @@ function Purchase() {
             <input
               type="text"
               className="inputitem"
-              placeholder="GJ12 xd 0000"
               value={truckInput}
+              onFocus
               onChange={(e) => settruckInput(e.target.value)}
               required
             />
-            <label className="labletext">Weight</label>
+            <label className="labletext">weight</label>
             <input
               type="number"
               className="inputitem"
-              placeholder="1000 kilos"
               value={weightInput}
+              onFocus
+              required
               onChange={(e) => setWeightInput(e.target.value)}
+            />
+            <label className="labletext">out weight</label>
+            <input
+              type="number"
+              className="inputitem"
+              value={outWeightInput}
+              onFocus
+              required
+              onChange={(e) => setoutWeight(e.target.value)}
             />
             <label className="labletext">Price</label>
             <input
               className="inputitem"
-              placeholder="0000000"
               value={priceInput}
+              onFocus
+              required
               onChange={(e) => setPriceInput(e.target.value)}
             />
             <label className="labletext">Total-Rupee</label>
             <input
               className="inputitem"
-              placeholder="0000000"
               value={rupeeInput}
+              onFocus
+              required
               onChange={(e) => setRupeeInput(e.target.value)}
             />
             <label className="labletext">PartyName</label>
             <input
               className="inputitem"
-              placeholder="abcdef"
               value={partynameInput}
+              onFocus
+              required
               onChange={(e) => setPartyNameInput(e.target.value)}
             />
             <label className="labletext">FarmerName</label>
             <input
               className="inputitem"
-              placeholder="absdef"
               value={farmerNameInput}
+              onFocus
+              required
               onChange={(e) => setFarmerNAmeInput(e.target.value)}
             />
-            <label className="labletext">DistributAmount</label>
+            <label className="labletext">Distribute-Amount</label>
             <input
               className="inputitem"
-              placeholder="0000000"
               value={DisAmountInput}
+              onFocus
+              required
               onChange={(e) => setDisAmountInput(e.target.value)}
             />
             <label className="labletext">PaymentDate</label>
@@ -123,23 +137,26 @@ function Purchase() {
               type="date"
               className="inputitem"
               value={paymentInput}
+              onFocus
+              required
               onChange={(e) => setPaymentInput(e.target.value)}
             />
             <label className="labletext">BrokerName</label>
             <input
               className="inputitem"
-              placeholder="abcdef"
               value={brokernameInput}
+              onFocus
+              required
               onChange={(e) => setBrokerNameInput(e.target.value)}
             />
+
             <button
               type="submit"
               onClick={handleSubmit}
               class="btn btn-outline-info"
             >
-              Submit
+              UPDATE
             </button>
-
           </form>
         </div>
       </div>
@@ -147,4 +164,4 @@ function Purchase() {
   );
 }
 
-export default Purchase;
+export default EditPurchaseData;

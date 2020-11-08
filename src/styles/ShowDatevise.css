@@ -1,22 +1,28 @@
-.showdatevise
-{
-    background-color: rgb(117, 32, 32);
-    text-align: center;
-    margin: 10px;
-    border-radius: 20px;
+.inputOutWeight {
+  background-color: rgb(219, 219, 219);
+  border-radius: 6px;
+  border-width: 0px;
+  outline-width: 0;
+  padding-left: 10px;
+ width: 100%;
+  
 }
-.bro
-{   
-    margin-top: 20px;
-    padding: 8px;
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    font-weight: bold;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.dataweightBox{
+  display: grid;
 }
-.name
-{
-    color: black;
-    font-size: 30px;
-    margin-left: 20px;
+.addweightbtn{
+  background-color: #180D44;
+  border-radius: 10px;
+  font-size: 15px;
+  outline-width: 0;
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+  color: aliceblue;
+  font-weight: bold;
+}
+.addweightbtn:hover{
+ color:  black;
+ 
+ background-color: white;
 }

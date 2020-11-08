@@ -1,13 +1,16 @@
-import * as React from "react";
+import * as React  from "react";
 import "../styles/Homestyles.css";
 import Header from "../components/dashboardheader";
 import { Link } from "react-router-dom";
+import DarkModeToggle from "react-dark-mode-toggle";
+import {useState} from 'react';
 
 function Home() {
+
   return (
     <div>
       <Header />
-    
+     
       <div
         className="nameofcompany"
         animate={{ scale: 2 }}
@@ -26,6 +29,7 @@ function Home() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
+
             <div className={"purchaselogo"} />
             <Link to="/purchase">
             <div className="purText text1">

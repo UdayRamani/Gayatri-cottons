@@ -1,5 +1,4 @@
-
-  /* Dasboard */
+/* Dasboard */
 .containerr {
   width: 1300px;
   overflow: hidden;
@@ -8,13 +7,23 @@
   display: flex;
 }
 .nameofcompany {
+
   font-size: 80px;
-  color: #f66f6f;
+  color: #6d5bb4;
+  margin-top: 40px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
-  margin-top: 60px;
   text-align: center;
   text-shadow: 1px 1px 3px #493b3b;
+  animation-name: example;
+  animation-duration: 20s;
+}
+@keyframes example {
+  0%   {color: #f07272;}
+  25%  {color:#93dd1c}
+  50%  {color:#98a5ff;}
+  75% {color:#d60000b4;}
+  100% {color: #8bdbc1;}
 }
 .PurchaseBox {
   float: left;
@@ -28,9 +37,12 @@
   cursor: pointer;
   transition: transform 100ms ease-in;
 }
-.PurchaseBox:hover
-{
-  transform:scale(1.07);
+.divdatebox{
+ 
+  text-align: end;
+}
+.PurchaseBox:hover {
+  transform: scale(1.07);
 }
 .purchaselogo {
   background-image: url("../truck1.png");
@@ -42,17 +54,21 @@
   margin-top: 10px;
   margin-left: 120px;
 }
-.purText
-{
+.purText {
   font-size: 30px;
-  text-shadow: 1px 3px 3px #493b3b;
   color: aliceblue;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
   margin-top: 130px;
   margin-left: 80px;
 }
-.text3
-{
+.datetimehome{
+  font-size: 20px;
+  align-items: center;
+  color: #f07272;
+  font-weight: bold;
+}
+
+.text3 {
   margin-left: 120px;
 }
 .ProductionBox {
@@ -67,8 +83,8 @@
   cursor: pointer;
   transition: transform 100ms ease-in;
 }
-.ProductionBox:hover{
-  transform:scale(1.07);
+.ProductionBox:hover {
+  transform: scale(1.07);
 }
 .productionlogo {
   background-image: url("../prologo.png");
@@ -92,8 +108,8 @@
   cursor: pointer;
   transition: transform 100ms ease-in;
 }
-.sellingBox:hover{
-  transform:scale(1.07);
+.sellingBox:hover {
+  transform: scale(1.07);
 }
 .sellinglogo {
   background-image: url("../truck2.png");
@@ -137,10 +153,8 @@
     border: 0;
     margin-top: 20px;
     flex-direction: row;
-
   }
-  .purText
-  {
+  .purText {
     font-size: 30px;
     text-shadow: 1px 3px 3px #493b3b;
     color: aliceblue;
@@ -148,11 +162,11 @@
     margin-top: 140px;
     margin-left: 80px;
   }
-  .text1{
+  .text1 {
     margin-left: 90px;
   }
-  .text3{
-    margin-left:110px
+  .text3 {
+    margin-left: 110px;
   }
   .purchaselogo {
     margin-top: 10px;
