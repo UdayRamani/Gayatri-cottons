@@ -45,7 +45,7 @@
   transform: scale(1.07);
 }
 .purchaselogo {
-  background-image: url("../truck1.png");
+  background-image: url("../truck2.png");
   width: 120px;
   height: 120px;
   background-size: cover;
@@ -53,6 +53,8 @@
   position: absolute;
   margin-top: 10px;
   margin-left: 120px;
+   transform: scaleX(-1);
+
 }
 .purText {
   font-size: 30px;
@@ -96,6 +98,14 @@
   top: 10px;
   left: 105px;
 }
+.editLoading{
+  color: #3922a1;
+  border-radius: 80px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  
+}
+
 .sellingBox {
   width: 22rem;
   height: 12rem;

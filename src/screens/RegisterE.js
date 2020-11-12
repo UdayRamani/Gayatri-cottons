@@ -4,6 +4,7 @@ import logo from "../logo1.png";
 import "../styles/styles1.css";
 import { motion } from "framer-motion";
 import app from "../config/fire";
+import { db } from "../config/fire";
 import Header from "../components/dashboardheader";
 import {Button} from 'react-bootstrap'
 const RegisterE = ({ history }) => {

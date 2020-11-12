@@ -40,7 +40,7 @@ const Login = ({ history }) => {
           <div className={"bgImage"} />
           <img src={logo} className={"bgImagelogo"} alt="Logo" />;
           <div className={"bgText bold style1"}>Welcome</div>
-          <div className={"bgText style2"}> Gaytri Cottons</div>
+          <div className={"bgText style2"}> Gayatri Cotton</div>
         </div>
         <div className={"rightBox"}>
           <div className={"box"}>

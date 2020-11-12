@@ -1,13 +1,11 @@
 import { TextField } from "@material-ui/core";
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { db } from "../config/fire";
 import "../styles/Purchase.css";
 function Purchase() {
-
- 
   const [date, setDate] = useState("");
   const [truckInput, settruckInput] = useState("");
   const [weightInput, setWeightInput] = useState("");
@@ -18,21 +16,21 @@ function Purchase() {
   const [DisAmountInput, setDisAmountInput] = useState("");
   const [paymentInput, setPaymentInput] = useState("");
   const [brokernameInput, setBrokerNameInput] = useState("");
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     db.collection("Purchase").add({
-      date:date,
-      trucknumber:truckInput,
-      weight:weightInput,
-      price:priceInput,
-      totalrupee:rupeeInput,
-      partiname:partynameInput,
-      farmername:farmerNameInput,
-      disamount:DisAmountInput,
-      paymentdate:paymentInput,
-      brokername:brokernameInput
+      date: date,
+      trucknumber: truckInput,
+      weight: weightInput,
+      price: priceInput,
+      totalrupee: rupeeInput,
+      partiname: partynameInput,
+      farmername: farmerNameInput,
+      disamount: DisAmountInput,
+      paymentdate: paymentInput,
+      brokername: brokernameInput,
     });
 
     setDate("");
@@ -47,18 +45,30 @@ function Purchase() {
     setBrokerNameInput("");
   };
 
-
   return (
     <div>
       <Header />
 
       <div className="header">PURCHASE</div>
+      <div className="dropDiv">
+      <Dropdown>
+        <Dropdown.Toggle className="dropdownMenu" id="dropdown-basic">
+          Dropdown The Catogaries
+        </Dropdown.Toggle>
 
-     
+        <Dropdown.Menu>
+          <Dropdown.Item href="/showsellingdata">Cotton</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Cotton Bells</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Oil</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Wastage</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Cotton Seed</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      </div>
       <div className="purchase">
         <div className="purchasefrom">
           <form>
-          <label className="labletext">Date</label>
+            <label className="labletext">Date</label>
             <input
               type="date"
               className="inputitem"
@@ -139,7 +149,6 @@ function Purchase() {
             >
               Submit
             </button>
-
           </form>
         </div>
       </div>

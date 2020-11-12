@@ -14,8 +14,7 @@ function Showpurchase() {
   const [Purchase, setpurchase] = useState([]);
 
   const [Current, setCurrent] = useState(1);
-  const [DataPerPage, setDataPerPage] = useState(5);
-
+  const [DataPerPage, setDataPerPage] = useState(10);
   const indexOfLastData = Current * DataPerPage;
   const indexOdFirstData = indexOfLastData - DataPerPage;
   const currentData = Purchase.slice(indexOdFirstData, indexOfLastData);
@@ -131,7 +130,12 @@ function Showpurchase() {
                 <td className="th">{purchases.data.totalrupee}</td>
                 <td className="th">{purchases.data.partiname}</td>
                 <td className="th">{purchases.data.farmername}</td>
-                <td className="th">{purchases.data.disamount}</td>
+                <td className="th">{purchases.data.disamount}
+                <ShowDatevise Purchase={purchases} /> 
+                <ShowDatevise Purchase={purchases} />
+                <ShowDatevise Purchase={purchases} />
+                <ShowDatevise Purchase={purchases} />
+                </td>
                 <td className="th">
                   {moment(
                     new Date(purchases.data.paymentdate).toDateString()

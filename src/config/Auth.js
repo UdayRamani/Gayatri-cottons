@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import fire from "../config/fire";
-
+import "../styles/Homestyles.css"
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   if(pending){
-    return <>Loading To Gayatri Cottons Industries...</>
+    return <><div className="loadingDiv"><h1 className="editLoading">Loading To Gayatri Cottons Industries...</h1></div></>
   }
 
   return (
