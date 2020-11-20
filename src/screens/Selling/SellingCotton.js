@@ -1,34 +1,45 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
-import { db } from "../config/fire";
-import { positions, transitions, types } from "react-alert";
-import { useAlert } from "react-alert";
-import { MDBContainer, MDBAlert } from "mdbreact";
+import { Dropdown } from "react-bootstrap";
+import Header from "../../components/Header";
+import { db } from "../../config/fire";
+import "../../styles/Selling.css";
+import fire from "../../config/fire";
 
-function EditSellingData({ Sellings, SellingID }) {
-  const [selldate, setSellDate] = useState(Sellings.sellingdate);
-  const [billnameInput, setBillNameInput] = useState(Sellings.billNo);
-  const [partynameInput, setPartyNameInput] = useState(Sellings.partiname);
-  const [weightInput, setWeightInput] = useState(Sellings.weight);
-  const [priceInput, setPriceInput] = useState(Sellings.price);
-  const [rupeeInput, setRupeeInput] = useState(Sellings.totalrupee);
-  const [brokernameInput, setBrokerNameInput] = useState(Sellings.brokername);
-  const alertss = () => {
-    alert("Your Data Is Updated");
-  };
+function SellingCotton() {
+  const [selldate, setSellDate] = useState("");
+  const [billnameInput, setBillNameInput] = useState("");
+  const [partynameInput, setPartyNameInput] = useState("");
+  const [weightInput, setWeightInput] = useState("");
+  const [priceInput, setPriceInput] = useState("");
+  const [rupeeInput, setRupeeInput] = useState("");
+  const [brokernameInput, setBrokerNameInput] = useState("");
+  const [SellProduct, setSellProduct] = useState("Cotton");
+  const [CurrentUser, setCurrentUser] = useState("");
+
+  const total = weightInput * priceInput / 40;
+  console.log("total" + total);
+
+  useEffect(() => {
+    fire.auth().onAuthStateChanged((user) => {
+      setCurrentUser(user.email)
+    });
+  }, []);
+    console.log(CurrentUser);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    db.collection("Selling").doc(SellingID).update({
+    db.collection("Selling").add({
       sellingdate: selldate,
       billNo: billnameInput,
       partiname: partynameInput,
       weight: weightInput,
       price: priceInput,
-      totalrupee: rupeeInput,
+      totalrupee: total,
       brokername: brokernameInput,
+      sellProduct: SellProduct,
+      currentUser: CurrentUser
+
     });
-    alertss();
     setSellDate("");
     setBillNameInput("");
     setPartyNameInput("");
@@ -36,8 +47,10 @@ function EditSellingData({ Sellings, SellingID }) {
     setPriceInput("");
     setRupeeInput("");
     setBrokerNameInput("");
-  };
+    setSellProduct("");
+    setCurrentUser("");
 
+  };
   const [Selling, setSelling] = useState([]);
   useEffect(() => {
     db.collection("Selling").onSnapshot((snapshot) =>
@@ -45,16 +58,24 @@ function EditSellingData({ Sellings, SellingID }) {
     );
     return () => {};
   }, []);
-  var cuttunUser=0;
-  {Selling.map((Purchases)=>(
-    cuttunUser= Purchases.data.currentUser
-  ))}
   return (
     <div>
       <Header />
-
-      <div className="header">EDIT SELLING DATA</div>
-     <label className="labletext">{cuttunUser}</label>
+      <div className="header">SELLING COTTON</div>
+      <div className="dropDiv">
+        <Dropdown>
+          <Dropdown.Toggle className="dropdownMenu" id="dropdown-basic">
+            Dropdown The Catogaries
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="/SellingWastage">Wastage</Dropdown.Item>
+            <Dropdown.Item href="/SellingOil">Oil</Dropdown.Item>
+            <Dropdown.Item href="/SellingKhol">Khol</Dropdown.Item>
+            <Dropdown.Item href="/SellingSeed">Cotton Seed</Dropdown.Item>
+            <Dropdown.Item href="/SellingBelles">Cotton Belles</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
       <div className="purchase">
         <div className="purchasefrom">
           <form>
@@ -70,6 +91,7 @@ function EditSellingData({ Sellings, SellingID }) {
             <input
               type="text"
               className="inputitem"
+              placeholder={"0012"}
               value={billnameInput}
               onChange={(e) => setBillNameInput(e.target.value)}
               required
@@ -77,6 +99,7 @@ function EditSellingData({ Sellings, SellingID }) {
             <label className="labletext">PartyName</label>
             <input
               className="inputitem"
+              placeholder="abcdef"
               value={partynameInput}
               onChange={(e) => setPartyNameInput(e.target.value)}
             />
@@ -84,25 +107,29 @@ function EditSellingData({ Sellings, SellingID }) {
             <input
               type="number"
               className="inputitem"
+              placeholder="1000 kilos"
               value={weightInput}
               onChange={(e) => setWeightInput(e.target.value)}
             />
             <label className="labletext">Price</label>
             <input
               className="inputitem"
+              placeholder="0000000"
               value={priceInput}
               onChange={(e) => setPriceInput(e.target.value)}
             />
             <label className="labletext">Total-Rupee</label>
             <input
               className="inputitem"
-              value={rupeeInput}
+              placeholder="0000000"
+              value={total}
               onChange={(e) => setRupeeInput(e.target.value)}
             />
 
             <label className="labletext">BrokerName</label>
             <input
               className="inputitem"
+              placeholder="abcdef"
               value={brokernameInput}
               onChange={(e) => setBrokerNameInput(e.target.value)}
             />
@@ -111,7 +138,7 @@ function EditSellingData({ Sellings, SellingID }) {
               onClick={handleSubmit}
               class="btn btn-outline-info"
             >
-              UPDATE
+              Submit
             </button>
           </form>
         </div>
@@ -120,4 +147,4 @@ function EditSellingData({ Sellings, SellingID }) {
   );
 }
 
-export default EditSellingData;
+export default SellingCotton;

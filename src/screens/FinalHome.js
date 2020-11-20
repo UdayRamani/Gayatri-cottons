@@ -222,7 +222,7 @@ export default function MiniDrawer() {
             whileTap={{ scale: 0.9 }}
           >
             <div className={"purchaselogo"} />
-            <Link to="/purchase">
+            <Link to="/purchasecotton">
               <div className="purText text1">
                 <label>PURACHASE</label>
               </div>{" "}
@@ -252,7 +252,7 @@ export default function MiniDrawer() {
             whileTap={{ scale: 0.9 }}
           >
             <div className={"sellinglogo"} />
-            <Link to="/selling">
+            <Link to="/SellingCotton">
               <div className="purText text3">
                 <label>SELLING</label>
               </div>

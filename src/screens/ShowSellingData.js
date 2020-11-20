@@ -22,10 +22,12 @@ function ShowSellingData() {
 
   useEffect(() => {
     db.collection("Selling")
-    .orderBy("sellingdate", "desc")
-    .onSnapshot((snapshot) =>
-      setSelling(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-    );
+      .orderBy("sellingdate", "desc")
+      .onSnapshot((snapshot) =>
+        setSelling(
+          snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+        )
+      );
     return () => {};
   }, []);
 
@@ -51,10 +53,10 @@ function ShowSellingData() {
     });
   }
 
- //Pagination...................
- for (let i = 1; i <= Math.ceil(finaldata / DataPerPage); i++) {
-  pageNumber.push(i);
-}
+  //Pagination...................
+  for (let i = 1; i <= Math.ceil(finaldata / DataPerPage); i++) {
+    pageNumber.push(i);
+  }
 
   return (
     <div>
@@ -84,11 +86,13 @@ function ShowSellingData() {
         <Table responsive striped bordered hover>
           <thead className="bodytable">
             <tr>
+              {/* <th scope="col">User Email </th> */}
               <th scope="col">Date </th>
               <th scope="col">Bill-No</th>
+              <th scope="col">Product</th>
               <th scope="col">PartyName</th>
               <th scope="col">Weight</th>
-              <th scope="col">Price</th>  
+              <th scope="col">Price</th>
               <th scope="col">Total-Rupee</th>
               <th scope="col">BrokerName</th>
               <th scope="col">Operation</th>
@@ -97,13 +101,18 @@ function ShowSellingData() {
           <tbody>
             {searchdata.map((Selling) => (
               <tr>
+                
+                {/* <td className="th">{Selling.data.currentUser}</td> */}
                 <th scope="row" className="th">
                   {" "}
                   {moment(
                     new Date(Selling.data.sellingdate).toDateString()
-                  ).format("LL")}
+                  ).format("DD-MM-YYYY")}
                 </th>
+                
+                
                 <td className="th">{Selling.data.billNo}</td>
+                <td className="th">{Selling.data.sellProduct}</td>
                 <td className="th">{Selling.data.partiname}</td>
                 <td className="th">{Selling.data.weight}</td>
                 <td className="th">{Selling.data.price}</td>
@@ -112,7 +121,12 @@ function ShowSellingData() {
                 <td className="th">
                   {" "}
                   <DeleteDataSelling Selling={Selling} />
-                  <Button href={'/editdataSelling/'+Selling.id} className="editBtn" >EDIT</Button>
+                  <Button
+                    href={"/editdataSelling/" + Selling.id}
+                    className="editBtn"
+                  >
+                    EDIT
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -123,10 +137,7 @@ function ShowSellingData() {
             <ul className="pagination">
               {pageNumber.map((number) => (
                 <li className="pageitem" key={number}>
-                  <a
-                    onClick={() => setCurrent(number)}
-                    className="pagelink"
-                  >
+                  <a onClick={() => setCurrent(number)} className="pagelink">
                     {number}
                   </a>
                 </li>
@@ -135,8 +146,7 @@ function ShowSellingData() {
           </nav>
         </div>
       </div>
-      </div>
-    
+    </div>
   );
 }
 

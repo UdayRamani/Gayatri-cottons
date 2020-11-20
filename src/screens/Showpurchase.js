@@ -10,6 +10,7 @@ import Serch from "./SerchPurchase";
 import { Input } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import EditPurchaseDate from "../components/EditPurchaseData";
+
 function Showpurchase() {
   const [Purchase, setpurchase] = useState([]);
 
@@ -22,7 +23,7 @@ function Showpurchase() {
   const finaldata = Purchase.length;
   const [Search, setSearch] = useState("");
   const [SearchTruck, setSearchTruck] = useState("");
-  
+
   let searchdata = currentData;
 
   // Show Data.....................
@@ -37,6 +38,48 @@ function Showpurchase() {
       );
     return () => {};
   }, []);
+
+  function Showsiamonut({ Purchase }) {
+    const [DisData, setDisData] = useState([]);
+    const [Purchasee, setpurchasee] = useState([]);
+    useEffect(() => {
+      db.collection("Purchase")
+        .doc(Purchase.id)
+        .get()
+        .then((doc) => {
+          if (doc && doc.exists) {
+            const mydata = [doc.data()];
+            console.log(doc.id, "=>", doc.data());
+            setpurchasee(mydata);
+          }
+        })
+        .catch((err) => {
+          console.log("Error getting documents", err);
+        });
+      return () => {};
+    }, []);
+    var datapurchaseeee = 0;
+    Purchasee.map(
+      (Purchassss) => (datapurchaseeee = Purchassss.totalrupee)
+    );
+
+    useEffect(() => {
+      db.collection("Purchase")
+        .doc(Purchase.id)
+        .collection("DistributeAmount")
+        .onSnapshot((snapshot) =>
+          setDisData(
+            snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+          )
+        );
+      return () => {};
+    }, []);
+
+    var disamounts = 0;
+    DisData.map((Disdatas) => (disamounts += +Disdatas.data.amountDis));
+    console.log(DisData);
+    return <div>{datapurchaseeee - disamounts}</div>;
+  }
 
   //Search.............
   const handleSearch = (e) => {
@@ -89,63 +132,107 @@ function Showpurchase() {
           />
         </div>
       </div>
-    
+
       <div className="showPurchaseBox">
         <Table responsive striped bordered hover>
           <thead className="bodytable">
             <tr>
-              <th scope="col"><h5>Date</h5> </th>
-              <th scope="col"><h6>TruckNumber</h6></th>
-              <th scope="col"><h6>In Weight</h6></th>
-              <th scope="col"><h6>Out Weight</h6></th>
-              <th scope="col"><h6>Total Cotton Weight</h6></th>
-              <th scope="col"><h6>Price</h6></th>
-              <th scope="col"><h6>Total-Rupee</h6></th>
-              <th scope="col"><h6>PartyName</h6></th>
-              <th scope="col"><h6>FarmerName</h6></th>
-              <th scope="col"><h6>Distribute-Amount</h6></th>
-              <th scope="col"><h6>PaymentDate</h6></th>
-              <th scope="col"><h6>BrokerName</h6></th>
-              <th scope="col"><h6>Operation</h6></th>
+              {/* <th scope="col">
+                <h5>User Email</h5>{" "}
+              </th> */}
+              <th scope="col">
+                <h5>Date</h5>{" "}
+              </th>
+              <th scope="col">
+                <h6>TruckNumber</h6>
+              </th>
+              <th scope="col">
+                <h6>Products</h6>
+              </th>
+              <th scope="col">
+                <h6>Weight</h6>
+              </th>
+              {/* <th scope="col">
+                <h6>Out Weight</h6>
+              </th> */}
+              {/* <th scope="col">
+                <h6>Total Weight</h6>
+              </th> */}
+              <th scope="col">
+                <h6>Price</h6>
+              </th>
+              <th scope="col">
+                <h6>Total-Rupee</h6>
+              </th>
+              <th scope="col">
+                <h6>PartyName</h6>
+              </th>
+              <th scope="col">
+                <h6>Dis-Amount</h6>
+              </th>
+              <th scope="col">
+                <h6>Total Dis-Amount</h6>
+              </th>
+              {/* <th scope="col">
+                <h6>PaymentDate</h6>
+              </th> */}
+              <th scope="col">
+                <h6>BrokerName</h6>
+              </th>
+              <th scope="col">
+                <h6>Operation</h6>
+              </th>
             </tr>
           </thead>
           <tbody>
             {searchdata.map((purchases) => (
               <tr>
+                {/* <td className="th">{purchases.data.currentUser}</td> */}
+
                 <th scope="row" className="th">
                   {moment(new Date(purchases.data.date).toDateString()).format(
-                    "LL"
+                    "DD-MM-YYYY"
                   )}
                 </th>
                 <td className="th">{purchases.data.trucknumber}</td>
+                <td className="th">{purchases.data.cottonInput}</td>
+
                 <td className="th">{purchases.data.weight}</td>
 
-                <td className="th">
+                {/* <td className="th">
                   <ShowDatevise Purchase={purchases} />
-                </td>
-                <td className="th">
+                </td> */}
+                {/* <td className="th">
                   {purchases.data.weight - purchases.data.outweight}
-                </td>
+                </td> */}
                 <td className="th">{purchases.data.price}</td>
                 <td className="th">{purchases.data.totalrupee}</td>
                 <td className="th">{purchases.data.partiname}</td>
-                <td className="th">{purchases.data.farmername}</td>
-                <td className="th">{purchases.data.disamount}
-                <ShowDatevise Purchase={purchases} /> 
+                {/* <td className="th">{purchases.data.farmername}</td> */}
                 <ShowDatevise Purchase={purchases} />
-                <ShowDatevise Purchase={purchases} />
-                <ShowDatevise Purchase={purchases} />
-                </td>
                 <td className="th">
+                  <Showsiamonut Purchase={purchases} />
+                  <Button
+                    href={"/EditDistributAmount/" + purchases.id}
+                    className="addweightbtn"
+                  >
+                    Add
+                  </Button>
+                </td>
+                {/* <td className="th">
                   {moment(
                     new Date(purchases.data.paymentdate).toDateString()
                   ).format("LL")}
-                </td>
+                </td> */}
                 <td className="th">{purchases.data.brokername}</td>
                 <td className="th">
                   <DeletedataPurchase Purchase={purchases} />
-                  {/* <Link to={{pathname: `/editdata/${purchases.id}`}}> */}
-                   <Button href={'/editdataPurchase/'+purchases.id} className="editBtn">EDIT</Button>
+                  <Button
+                    href={"/editdataPurchase/" + purchases.id}
+                    className="editBtn"
+                  >
+                    EDIT
+                  </Button>
                   {/* </Link> */}
                 </td>
               </tr>

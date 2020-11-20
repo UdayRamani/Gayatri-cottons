@@ -36,7 +36,7 @@ const Header = () => {
             <label className="texticon"></label>
           </div>
           <div className="header_option">
-            <Link to="/purchase">
+            <Link to="/purchaseCotton">
               <CartFill color="white" fontSize="30px" data-tip data-for="registerTip1" />
               <ReactTooltip id="registerTip1" place="top" effect="solid">
                 PURCHASE
@@ -46,7 +46,7 @@ const Header = () => {
             <label className="texticon"></label>
           </div>
           <div className="header_option">
-            <Link to="/selling">
+            <Link to="/SellingCotton">
               <BagFill color="white" fontSize="30px" data-tip data-for="registerTip2"/>
               <ReactTooltip id="registerTip2" place="top" effect="solid">
                 SELLING

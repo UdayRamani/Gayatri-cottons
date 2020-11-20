@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
-import { db } from "../config/fire";
-function Selling() {
+import { Dropdown } from "react-bootstrap";
+import Header from "../../components/Header";
+import { db } from "../../config/fire";
+import "../../styles/Selling.css";
+import fire from "../../config/fire";
+
+function SellingSeed() {
   const [selldate, setSellDate] = useState("");
   const [billnameInput, setBillNameInput] = useState("");
   const [partynameInput, setPartyNameInput] = useState("");
@@ -9,6 +13,17 @@ function Selling() {
   const [priceInput, setPriceInput] = useState("");
   const [rupeeInput, setRupeeInput] = useState("");
   const [brokernameInput, setBrokerNameInput] = useState("");
+  const [SellProduct, setSellProduct] = useState("Seed");
+  const [CurrentUser, setCurrentUser] = useState("");
+
+  const total = weightInput * priceInput / 20;
+  console.log("total" + total);
+  useEffect(() => {
+    fire.auth().onAuthStateChanged((user) => {
+      setCurrentUser(user.email)
+    });
+  }, []);
+    console.log(CurrentUser);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,8 +33,11 @@ function Selling() {
       partiname: partynameInput,
       weight: weightInput,
       price: priceInput,
-      totalrupee: rupeeInput,
+      totalrupee: total,
       brokername: brokernameInput,
+      sellProduct: SellProduct,
+      currentUser: CurrentUser
+
     });
 
     setSellDate("");
@@ -28,10 +46,10 @@ function Selling() {
     setWeightInput("");
     setPriceInput("");
     setRupeeInput("");
-
     setBrokerNameInput("");
+    setSellProduct("");
+    setCurrentUser("");
   };
-
   const [Selling, setSelling] = useState([]);
   useEffect(() => {
     db.collection("Selling").onSnapshot((snapshot) =>
@@ -42,7 +60,23 @@ function Selling() {
   return (
     <div>
       <Header />
-      <div className="header">SELLING</div>
+      <div className="header">SELLING SEED</div>
+      <div className="dropDiv">
+        <Dropdown>
+          <Dropdown.Toggle className="dropdownMenu" id="dropdown-basic">
+            Dropdown The Catogaries
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="/SellingCotton">Cotton</Dropdown.Item>
+            <Dropdown.Item href="/SellingOil">Oil</Dropdown.Item>
+            <Dropdown.Item href="/SellingWastage">Wastage</Dropdown.Item>
+            <Dropdown.Item href="/SellingBelles">Cotton Belles</Dropdown.Item>
+            <Dropdown.Item href="/SellingKhol">Khol</Dropdown.Item>
+
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
       <div className="purchase">
         <div className="purchasefrom">
           <form>
@@ -89,7 +123,7 @@ function Selling() {
             <input
               className="inputitem"
               placeholder="0000000"
-              value={rupeeInput}
+              value={total}
               onChange={(e) => setRupeeInput(e.target.value)}
             />
 
@@ -114,4 +148,4 @@ function Selling() {
   );
 }
 
-export default Selling;
+export default SellingSeed;

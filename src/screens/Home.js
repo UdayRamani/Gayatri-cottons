@@ -31,7 +31,7 @@ function Home() {
           >
 
             <div className={"purchaselogo"} />
-            <Link to="/purchase">
+            <Link to="/purchasecotton">
             <div className="purText text1">
               <label>PURACHASE</label>
             </div> </Link>
