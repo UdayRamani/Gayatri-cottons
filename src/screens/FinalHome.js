@@ -7,11 +7,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
-import StorageIcon from "@material-ui/icons/Storage";
 import IconButton from "@material-ui/core/IconButton";
 import LockOpenRoundedIcon from "@material-ui/icons/LockOpenRounded";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -20,19 +18,14 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import LockIcon from "@material-ui/icons/Lock";
-import MailIcon from "@material-ui/icons/Mail";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import "../styles/Homestyles.css";
-import Header from "../components/dashboardheader";
 import { Link } from "react-router-dom";
-import { Lock, LockFill } from "react-bootstrap-icons";
 import fire from "../config/fire";
 import moment from "moment";
-import Calendar from 'react-calendar';
-const drawerWidth = 240;
 
+const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -98,8 +91,8 @@ const useStyles = makeStyles((theme) => ({
 export default function MiniDrawer() {
   const today = moment();
   const currentdate = today.format("MMMM Do YYYY");
-  const day=today.format("dddd");
-  const time=today.format("h:mm:ss a")
+  const day = today.format("dddd");
+  const time = today.format("h:mm:ss a");
   const tidaydate = today.format("dddd, MMMM Do YYYY, h:mm:ss a");
   const classes = useStyles();
   const theme = useTheme();
@@ -199,6 +192,22 @@ export default function MiniDrawer() {
               <ListItemText primary={text} />
             </ListItem>
           ))}
+          <div className="userDiv">
+            {" "}
+            <Link to="/UserProfile">
+              <AccountCircleIcon
+                style={{
+                  fontSize: 30,
+                  marginLeft: 14,
+                  color: "#7e7979",
+                }}
+                className="userTexticon"
+                data-tip
+                data-for="registerTip3"
+              />
+            </Link>
+            <label className="userText">User Profile</label>
+          </div>
         </List>
       </Drawer>
       <main className={classes.content}>
@@ -208,7 +217,7 @@ export default function MiniDrawer() {
         <label className="datetimehome">{day}</label><br></br>
         <label className="datetimehome">{time}</label><br></br>
         </div> */}
-       
+
         <div className="nameofcompany">
           <label>GAYATRI COTTON INDUSTRIES</label>
         </div>
@@ -252,7 +261,7 @@ export default function MiniDrawer() {
             whileTap={{ scale: 0.9 }}
           >
             <div className={"sellinglogo"} />
-            <Link to="/SellingCotton">
+            <Link to="/Selling">
               <div className="purText text3">
                 <label>SELLING</label>
               </div>

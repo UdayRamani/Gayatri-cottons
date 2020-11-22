@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Profiler } from "react";
 import logo from "../logo1.png";
 import "../styles/styles1.css";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import ReactTooltip from "react-tooltip";
-
 import {
   BagCheckFill,
   BagFill,
@@ -28,7 +27,12 @@ const Header = () => {
 
           <div className="header_option">
             <Link to="/">
-              <House color="white" fontSize="30px" data-tip data-for="registerTip" />
+              <House
+                color="white"
+                fontSize="30px"
+                data-tip
+                data-for="registerTip"
+              />
               <ReactTooltip id="registerTip" place="top" effect="solid">
                 HOME
               </ReactTooltip>
@@ -37,7 +41,12 @@ const Header = () => {
           </div>
           <div className="header_option">
             <Link to="/purchaseCotton">
-              <CartFill color="white" fontSize="30px" data-tip data-for="registerTip1" />
+              <CartFill
+                color="white"
+                fontSize="30px"
+                data-tip
+                data-for="registerTip1"
+              />
               <ReactTooltip id="registerTip1" place="top" effect="solid">
                 PURCHASE
               </ReactTooltip>
@@ -46,13 +55,17 @@ const Header = () => {
             <label className="texticon"></label>
           </div>
           <div className="header_option">
-            <Link to="/SellingCotton">
-              <BagFill color="white" fontSize="30px" data-tip data-for="registerTip2"/>
+            <Link to="/Selling">
+              <BagFill
+                color="white"
+                fontSize="30px"
+                data-tip
+                data-for="registerTip2"
+              />
               <ReactTooltip id="registerTip2" place="top" effect="solid">
                 SELLING
               </ReactTooltip>
             </Link>
-
             <label className="texticon"></label>
           </div>
           <div className="header_option">
@@ -60,9 +73,10 @@ const Header = () => {
               <ShoppingCartIcon
                 className="iconsheader"
                 style={{ fontSize: 30 }}
-                data-tip data-for="registerTip3"
+                data-tip
+                data-for="registerTip3"
               />
-               <ReactTooltip id="registerTip3" place="top" effect="solid">
+              <ReactTooltip id="registerTip3" place="top" effect="solid">
                 SHOW PURCHASE DATA
               </ReactTooltip>
             </Link>
@@ -73,7 +87,8 @@ const Header = () => {
               <AttachMoneyIcon
                 className="iconsheader"
                 style={{ fontSize: 30 }}
-                data-tip data-for="registerTip4"
+                data-tip
+                data-for="registerTip4"
               />
               <ReactTooltip id="registerTip4" place="top" effect="solid">
                 SHOW SELLING DATA
@@ -83,9 +98,12 @@ const Header = () => {
           </div>
           <div className="header_option">
             <Link to="/production">
-              <BarChartFill color="white" fontSize="30px"
-                              data-tip data-for="registerTip5"
-                              />
+              <BarChartFill
+                color="white"
+                fontSize="30px"
+                data-tip
+                data-for="registerTip5"
+              />
               <ReactTooltip id="registerTip5" place="top" effect="solid">
                 SHOW PRODUCTION DATA
               </ReactTooltip>
@@ -94,6 +112,7 @@ const Header = () => {
             <label className="texticon"></label>
           </div>
         </div>
+       
         {/* </div> */}
       </nav>
     </div>

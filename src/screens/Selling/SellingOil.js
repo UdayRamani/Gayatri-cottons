@@ -16,7 +16,9 @@ function SellingOil() {
   const [brokernameInput, setBrokerNameInput] = useState("");
   const [SellProduct, setSellProduct] = useState("Oil");
   const [CurrentUser, setCurrentUser] = useState("");
-  const total = weightInput * priceInput / 10;
+  var total = weightInput * priceInput / 10;
+  total = Math.round(total);
+
   console.log("total" + total);
 
   useEffect(() => {

@@ -6,6 +6,8 @@ import Header from "../../components/Header";
 import { db } from "../../config/fire";
 import fire from "../../config/fire";
 import '../../styles/Purchase.css'
+import { Select } from "@material-ui/core";
+
 function PurchaseCotton() {
   const [date, setDate] = useState("");
   const [truckInput, settruckInput] = useState("");
@@ -19,14 +21,55 @@ function PurchaseCotton() {
   const [brokernameInput, setBrokerNameInput] = useState("");
   const [CottonInput,setCottonInput]=useState("Cotton");
   const [CurrentUser, setCurrentUser] = useState("");
+
+  const [loading, setLoading] = React.useState(true);
+  const [items, setItems] = React.useState([
+    { label: "cotton", value: "cotton" },
+    { label: "belles", value: "belles" },
+    { label: "seed", value: "seed" },
+    { label: "khol", value: "khol" },
+    { label: "oil", value: "oil" },
+    { label: "wastage", value: "wastage" },
+  ]);
+  
+  const [value, setValue] = React.useState("R2-D2");
+
+  var itemcotton = "";
+  var total = 0; 
+ 
+    if (value == "cotton") {
+      itemcotton = "COTTON";
+      total = weightInput * priceInput / 40;
+    }
+    if (value == "belles") {
+      itemcotton = "BELLES";
+      total = (weightInput * priceInput * 0.2812) / 100;
+    }
+    if (value == "seed") {
+      itemcotton = "SEED";
+      total = weightInput * priceInput / 20;
+    }
+    if (value == "khol") {
+      itemcotton = "KHOL";
+      total = weightInput * priceInput / 50;
+    }
+    if (value == "oil") {
+      itemcotton = "OIL";
+      total = weightInput * priceInput / 10;
+    }
+    if (value == "wastage") {
+      itemcotton = "WASTAGE";
+      total = weightInput * priceInput;
+    }
+
+    total = Math.round(total);
+
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
       setCurrentUser(user.email)
     });
   }, []);
-    console.log(CurrentUser);
-  
-    const total = weightInput * priceInput / 40;
+
     console.log("total" + total);
   const handleSubmit = (e) => {
     
@@ -42,7 +85,7 @@ function PurchaseCotton() {
       // disamount: DisAmountInput,
       // paymentdate: paymentInput,
       brokername: brokernameInput,
-      cottonInput: CottonInput,
+      cottonInput: value,
       currentUser: CurrentUser
     });
     setDate("");
@@ -65,8 +108,22 @@ function PurchaseCotton() {
     <div>
       <Header />
 
-      <div className="header">PURCHASE COTTON</div>
+      <div className="header">PURCHASE {itemcotton}</div>
       <div className="dropDiv">
+        <label className="productDrop">Select The Product Here</label>
+        <Select
+          className="dropdownMenu1"
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+        >
+          {items.map(({ label, value }) => (
+            <option className="OptionsDropDown" key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </Select>
+      </div>
+      {/* <div className="dropDiv">
       <Dropdown>
         <Dropdown.Toggle className="dropdownMenu" id="dropdown-basic">
           Dropdown The Catogaries
@@ -79,7 +136,7 @@ function PurchaseCotton() {
           <Dropdown.Item href="/PurchaseKhol">Khol</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      </div>
+      </div> */}
       <div className="purchase">
         <div className="purchasefrom">
           <form autocomplete="on">

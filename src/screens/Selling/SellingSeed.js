@@ -16,7 +16,9 @@ function SellingSeed() {
   const [SellProduct, setSellProduct] = useState("Seed");
   const [CurrentUser, setCurrentUser] = useState("");
 
-  const total = weightInput * priceInput / 20;
+  var total = weightInput * priceInput / 20;
+  total = Math.round(total);
+
   console.log("total" + total);
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {

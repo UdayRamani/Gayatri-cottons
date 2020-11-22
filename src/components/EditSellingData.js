@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { db } from "../config/fire";
+import "../styles/Selling.css";
+
 import { positions, transitions, types } from "react-alert";
 import { useAlert } from "react-alert";
 import { MDBContainer, MDBAlert } from "mdbreact";
@@ -16,16 +18,37 @@ function EditSellingData({ Sellings, SellingID }) {
   const alertss = () => {
     alert("Your Data Is Updated");
   };
+
+  var total = 0;
+  if (Sellings.sellProduct == "cotton") {
+    total = (weightInput * priceInput) / 40;
+  }
+  if (Sellings.sellProduct == "belles") {
+    total = (weightInput * priceInput * 0.2812) / 100;
+  }
+  if (Sellings.sellProduct == "khol") {
+    total = (weightInput * priceInput) / 50;
+  }
+  if (Sellings.sellProduct == "oil") {
+    total = (weightInput * priceInput) / 10;
+  }
+  if (Sellings.sellProduct == "seed") {
+    total = (weightInput * priceInput) / 20;
+  }
+  if (Sellings.sellProduct == "wastage") {
+    total = weightInput * priceInput;
+  }
+  total = Math.round(total);
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     db.collection("Selling").doc(SellingID).update({
       sellingdate: selldate,
       billNo: billnameInput,
       partiname: partynameInput,
       weight: weightInput,
       price: priceInput,
-      totalrupee: rupeeInput,
+      totalrupee: total,
       brokername: brokernameInput,
     });
     alertss();
@@ -38,23 +61,27 @@ function EditSellingData({ Sellings, SellingID }) {
     setBrokerNameInput("");
   };
 
-  const [Selling, setSelling] = useState([]);
-  useEffect(() => {
-    db.collection("Selling").onSnapshot((snapshot) =>
-      setSelling(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-    );
-    return () => {};
-  }, []);
-  var cuttunUser=0;
-  {Selling.map((Purchases)=>(
-    cuttunUser= Purchases.data.currentUser
-  ))}
+  // const [Selling, setSelling] = useState([]);
+  // useEffect(() => {
+  //   db.collection("Selling").onSnapshot((snapshot) =>
+  //     setSelling(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+  //   );
+  //   return () => {};
+  // }, []);
+  // var cuttunUser=0;
+  // {Selling.map((Purchases)=>(
+  //   cuttunUser= Purchases.data.currentUser
+  // ))}
   return (
     <div>
       <Header />
 
       <div className="header">EDIT SELLING DATA</div>
-     <label className="labletext">{cuttunUser}</label>
+      <div className="LableBox">
+        <label className="labelOfCurrntUser">User ID : {Sellings.currentUser}</label>
+        <label className="lableOfProduct">Product : {Sellings.sellProduct}</label>
+      </div>
+
       <div className="purchase">
         <div className="purchasefrom">
           <form>
@@ -96,7 +123,7 @@ function EditSellingData({ Sellings, SellingID }) {
             <label className="labletext">Total-Rupee</label>
             <input
               className="inputitem"
-              value={rupeeInput}
+              value={total}
               onChange={(e) => setRupeeInput(e.target.value)}
             />
 

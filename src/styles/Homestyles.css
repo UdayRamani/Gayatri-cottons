@@ -7,7 +7,6 @@
   display: flex;
 }
 .nameofcompany {
-
   font-size: 80px;
   color: #6d5bb4;
   margin-top: 40px;
@@ -19,11 +18,21 @@
   animation-duration: 20s;
 }
 @keyframes example {
-  0%   {color: #f07272;}
-  25%  {color:#93dd1c}
-  50%  {color:#98a5ff;}
-  75% {color:#d60000b4;}
-  100% {color: #8bdbc1;}
+  0% {
+    color: #f07272;
+  }
+  25% {
+    color: #93dd1c;
+  }
+  50% {
+    color: #98a5ff;
+  }
+  75% {
+    color: #d60000b4;
+  }
+  100% {
+    color: #8bdbc1;
+  }
 }
 .PurchaseBox {
   float: left;
@@ -37,8 +46,7 @@
   cursor: pointer;
   transition: transform 100ms ease-in;
 }
-.divdatebox{
- 
+.divdatebox {
   text-align: end;
 }
 .PurchaseBox:hover {
@@ -53,8 +61,7 @@
   position: absolute;
   margin-top: 10px;
   margin-left: 120px;
-   transform: scaleX(-1);
-
+  transform: scaleX(-1);
 }
 .purText {
   font-size: 30px;
@@ -63,7 +70,7 @@
   margin-top: 130px;
   margin-left: 80px;
 }
-.datetimehome{
+.datetimehome {
   font-size: 20px;
   align-items: center;
   color: #f07272;
@@ -98,12 +105,11 @@
   top: 10px;
   left: 105px;
 }
-.editLoading{
+.editLoading {
   color: #3922a1;
   border-radius: 80px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: bold;
-  
 }
 
 .sellingBox {
@@ -131,7 +137,77 @@
   top: 10px;
   left: 125px;
 }
-
+.userDiv {
+  cursor: pointer;
+}
+.userDiv:hover {
+  background-color: rgba(161, 161, 161, 0.13);
+}
+.userText {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 30px;
+}
+.userTexticon {
+  font-size: 36px;
+}
+/* ProfileStyle */
+.CurrentUSer {
+  float: left;
+  width: 32rem;
+  height: 30rem;
+  border-radius: 30px;
+  position: relative;
+  box-shadow: 2px 2px 3px gray;
+  background-color: #509ea3;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+.ALlUSerBox {
+  width: 40rem;
+  height: 30rem;
+  float: right;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 2px 2px 3px gray;
+  position: relative;
+  background-color: #705ec2;
+  cursor: pointer;
+  margin-left: 120px;
+  font-weight: bold;
+}
+.CurrntUSerText {
+  font-size: 30px;
+  color: rgb(19, 35, 51);
+  font-weight: bold;
+  text-align: center;
+}
+.userTexticon {
+  text-align: center;
+}
+.headingofcurrunttext {
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 40px;
+  margin-left: 4px;
+  margin-right: 4px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 3px #493b3b;
+}
+.AlluserText {
+  font-size: 30px;
+  color: rgb(7, 21, 32);
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+.alluserText {
+  margin-top: 10px;
+}
 @media screen and (max-width: 1220px) {
   .containerr {
     width: 100%;
@@ -149,6 +225,9 @@
     border: 0;
     margin: 0 auto;
     margin-top: 20px;
+  }
+  .username {
+    font-size: 70px;
   }
   .ProductionBox {
     width: 100%;
@@ -190,4 +269,66 @@
     margin-top: 10px;
     margin-left: -20px;
   }
+/* //profile */
+  .CurrentUSer {
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 2px 2px 3px gray;
+    background-color: #509ea3;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+  }
+  .ALlUSerBox {
+    width: 100%;
+    height: 50%;
+    margin-top: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 2px 2px 3px gray;
+    position: relative;
+    background-color: #705ec2;
+    cursor: pointer;  
+    margin-left: 0px;
+    font-weight: bold;
+    flex-direction: row;
+  }
+  .CurrntUSerText {
+    font-size: 20px;
+    color: rgb(19, 35, 51);
+    font-weight: bold;
+    text-align: center;
+  }
+  .userTexticon {
+    text-align: center;
+  }
+  .headingofcurrunttext {
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 40px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 3px #493b3b;
+  }
+  .AlluserText {
+    font-size: 20px;
+    color: rgb(7, 21, 32);
+    font-weight: bold;
+   
+  }
+  .alluserText {
+    margin-top: 10px;
+  }
+
+
+
+
+
 }

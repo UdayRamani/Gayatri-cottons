@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import { db } from "../../config/fire";
 import "../../styles/Selling.css";
 import fire from "../../config/fire";
+import { Select } from "@material-ui/core";
 
 function SellingBelles() {
   const [selldate, setSellDate] = useState("");
@@ -16,15 +17,52 @@ function SellingBelles() {
   const [SellProduct, setSellProduct] = useState("Belles");
   const [CurrentUser, setCurrentUser] = useState("");
 
-  const total = weightInput * priceInput * 0.2812/100;
-  console.log("total" + total);
+    const [loading, setLoading] = React.useState(true);
+    const [items, setItems] = React.useState([
+      { label: "cotton", value: "cotton" },
+      { label: "belles", value: "belles" },
+      { label: "seed", value: "seed" },
+      { label: "khol", value: "khol" },
+      { label: "oil", value: "oil" },
+      { label: "wastage", value: "wastage" },
+    ]);
+    
+    const [value, setValue] = React.useState("R2-D2");
+  var itemcotton = "";
+  var total = 0; 
+ 
+    if (value == "cotton") {
+      itemcotton = "COTTON";
+      total = weightInput * priceInput / 40;
+    }
+    if (value == "belles") {
+      itemcotton = "BELLES";
+      total = (weightInput * priceInput * 0.2812) / 100;
+    }
+    if (value == "seed") {
+      itemcotton = "SEED";
+      total = weightInput * priceInput / 20;
+    }
+    if (value == "khol") {
+      itemcotton = "KHOL";
+      total = weightInput * priceInput / 50;
+    }
+    if (value == "oil") {
+      itemcotton = "OIL";
+      total = weightInput * priceInput / 10;
+    }
+    if (value == "wastage") {
+      itemcotton = "WASTAGE";
+      total = weightInput * priceInput;
+    }
+
+    total = Math.round(total);
 
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
-      setCurrentUser(user.email)
+      setCurrentUser(user.email);
     });
   }, []);
-    console.log(CurrentUser);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,11 +74,9 @@ function SellingBelles() {
       price: priceInput,
       totalrupee: total,
       brokername: brokernameInput,
-      sellProduct: SellProduct,
-      currentUser: CurrentUser
-
+      sellProduct: value,
+      currentUser: CurrentUser,
     });
-
     setSellDate("");
     setBillNameInput("");
     setPartyNameInput("");
@@ -50,36 +86,26 @@ function SellingBelles() {
     setBrokerNameInput("");
     setSellProduct("");
     setCurrentUser("");
-
   };
-
-  const [Selling, setSelling] = useState([]);
-  useEffect(() => {
-    db.collection("Selling").onSnapshot((snapshot) =>
-      setSelling(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-    );
-    return () => {};
-  }, []);
   return (
     <div>
       <Header />
-      <div className="header">SELLING BELLES</div>
+      <div className="header">SELLING {itemcotton}</div>
       <div className="dropDiv">
-        <Dropdown>
-          <Dropdown.Toggle className="dropdownMenu" id="dropdown-basic">
-            Dropdown The Catogaries
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="/SellingCotton">Cotton</Dropdown.Item>
-            <Dropdown.Item href="/SellingOil">Oil</Dropdown.Item>
-            <Dropdown.Item href="/SellingWastage">Wastage</Dropdown.Item>
-            <Dropdown.Item href="/SellingSeed">Cotton Seed</Dropdown.Item>
-            <Dropdown.Item href="/SellingKhol">Cotton Seed</Dropdown.Item>
-
-          </Dropdown.Menu>
-        </Dropdown>
+        <label className="productDrop">Select The Product Here</label>
+        <Select
+          className="dropdownMenu1"
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+        >
+          {items.map(({ label, value }) => (
+            <option className="OptionsDropDown" key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </Select>
       </div>
+
       <div className="purchase">
         <div className="purchasefrom">
           <form>

@@ -28,7 +28,9 @@ function PurchaseWastage() {
   }, []);
     console.log(CurrentUser);
 
-    const total = weightInput * priceInput;
+    var total = weightInput * priceInput;
+    total = Math.round(total);
+
     console.log("total" + total);
   const handleSubmit = (e) => {
    

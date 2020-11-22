@@ -19,10 +19,27 @@ function EditPurchaseData({ Purchases, PurchaseID }) {
   const [brokernameInput, setBrokerNameInput] = useState(Purchases.brokername);
   // const [outWeightInput, setoutWeight] = useState(Purchases.outweight);
 
+  var total = 0;
+  if (Purchases.cottonInput == "cotton") {
+    total = (weightInput * priceInput) / 40;
+  }
+  if (Purchases.cottonInput == "belles") {
+    total = (weightInput * priceInput * 0.2812) / 100;
+  }
+  if (Purchases.cottonInput == "khol") {
+    total = (weightInput * priceInput) / 50;
+  }
+  if (Purchases.cottonInput == "oil") {
+    total = (weightInput * priceInput) / 10;
+  }
+  if (Purchases.cottonInput == "seed") {
+    total = (weightInput * priceInput) / 20;
+  }
+  if (Purchases.cottonInput == "wastage") {
+    total = weightInput * priceInput;
+  }
+  total = Math.round(total);
 
-  const total = weightInput * priceInput;
-  console.log("total" + total);
-  
   const handleSubmit = (e) => {
     const alertss = () => {
       alert("Your Data Is Updated");
@@ -54,26 +71,33 @@ function EditPurchaseData({ Purchases, PurchaseID }) {
     setBrokerNameInput("");
     // setoutWeight("");
   };
-  useEffect(() => {
-    db.collection("Purchase")
-      .orderBy("date", "desc")
-      .onSnapshot((snapshot) =>
-        setpurchase(
-          snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
-        )
-      );
-    return () => {};
-  }, []);
+  // useEffect(() => {
+  //   db.collection("Purchase")
+  //     .orderBy("date", "desc")
+  //     .onSnapshot((snapshot) =>
+  //       setpurchase(
+  //         snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+  //       )
+  //     );
+  //   return () => {};
+  // }, []);
 
-  var cuttunUser=0;
-  {Purchase.map((Purchases)=>(
-    cuttunUser= Purchases.data.currentUser
-  ))}
+  // var cuttunUser = 0;
+  // {
+  //   Purchase.map((Purchases) => (cuttunUser = Purchases.data.currentUser));
+  // }
   return (
     <div>
       <Header />
       <div className="header">EDIT PURCHASE DATA</div>
-      <label className="labletext">{cuttunUser}</label>
+      <div className="LableBox">
+        <label className="labelOfCurrntUser">
+          User ID : {Purchases.currentUser}
+        </label>
+        <label className="lableOfProduct">
+          Product : {Purchases.cottonInput}
+        </label>
+      </div>
       <div className="purchase">
         <div className="purchasefrom">
           <form>
@@ -104,7 +128,7 @@ function EditPurchaseData({ Purchases, PurchaseID }) {
               required
               onChange={(e) => setWeightInput(e.target.value)}
             />
-           {/* <label className="labletext">out weight</label>
+            {/* <label className="labletext">out weight</label>
              <input
               type="number"
               className="inputitem"

@@ -16,7 +16,9 @@ function SellingWastage() {
   const [SellProduct, setSellProduct] = useState("Wastage");
   const [CurrentUser, setCurrentUser] = useState("");
 
-  const total = weightInput * priceInput;
+  var total = weightInput * priceInput;
+  total = Math.round(total);
+
   console.log("total" + total);
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {

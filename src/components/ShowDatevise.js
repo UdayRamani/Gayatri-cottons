@@ -27,9 +27,7 @@ function ShowDatevise({ Purchase }) {
               <th>Farmer Name</th>
               <th>Amount</th>
               <th>Pay-Method</th>
-              <th>Date</th>
-              
-              
+              <th>Date</th>     
             </tr>
           </thead>
           <tbody>
@@ -37,12 +35,10 @@ function ShowDatevise({ Purchase }) {
               <tr>
                 <td>{Disdatas.data.farmerNamedis}</td>
                 <td>{Disdatas.data.amountDis}</td>
-                <td> {Disdatas.data.paymentDetailsdis}</td>
-               
+                <td> {Disdatas.data.paymentDetailsdis}</td>     
                 <td> {moment(new Date(Disdatas.data.paymentDatedis).toDateString()).format(
                     "DD-MM-YYYY"
-                  )}</td>
-              
+                  )}</td>     
               </tr>
             ))}
           </tbody>

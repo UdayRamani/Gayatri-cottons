@@ -27,7 +27,9 @@ function PurchaseSeed() {
     });
   }, []);
     console.log(CurrentUser);
-    const total = weightInput * priceInput / 10;
+    var total = weightInput * priceInput / 10;
+    total = Math.round(total);
+
     console.log("total" + total);
   const handleSubmit = (e) => {
     

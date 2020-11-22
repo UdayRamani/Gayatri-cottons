@@ -21,7 +21,9 @@ function PurchaseBelles() {
   const [CottonInput,setCottonInput]=useState("Bells");
   const [CurrentUser, setCurrentUser] = useState("");
 
-  const total = weightInput * priceInput * 0.2812/100;
+  var total = weightInput * priceInput * 0.2812/100;
+  total = Math.round(total);
+
   console.log("total" + total);
 
   useEffect(() => {

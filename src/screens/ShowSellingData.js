@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../config/fire";
 import "../styles/Showpurchase.css";
+import "../styles/ShowSellingData.css";
+
 import moment from "moment";
 import ShowDatevise from "../components/ShowDatevise";
 import Header from "../components/Header.js";
@@ -8,14 +10,27 @@ import { Button, Table } from "react-bootstrap";
 import SearchSelling from "./SearchSelling";
 import DeleteDataSelling from "../components/DeleteDataSelling";
 import { Link } from "react-router-dom";
+import { Select } from "@material-ui/core";
+
 function ShowSellingData() {
   const [Selling, setSelling] = useState([]);
   const [Search, setSearch] = useState("");
   const [SearchBill, setSearchBill] = useState("");
   const [Current, setCurrent] = useState(1);
-  const [DataPerPage, setDataPerPage] = useState(5);
-  const indexOfLastData = Current * DataPerPage;
-  const indexOdFirstData = indexOfLastData - DataPerPage;
+  const [loading, setLoading] = React.useState(true);
+  const [items, setItems] = React.useState([
+    { label: 5, value: 5 },
+    { label: 10, value: 10 },
+    { label: 15, value: 15 },
+    { label: 20, value: 20 },
+    { label: 25, value: 25 },
+  ]);
+  const [value, setValue] = React.useState(5);
+  var valuesdata=value;
+  console.log(valuesdata);
+  const [DataPerPage, setDataPerPage] = useState(valuesdata);
+  const indexOfLastData = Current * value;
+  const indexOdFirstData = indexOfLastData - value;
   const currentData = Selling.slice(indexOdFirstData, indexOfLastData);
   const pageNumber = [];
   const finaldata = Selling.length;
@@ -54,7 +69,7 @@ function ShowSellingData() {
   }
 
   //Pagination...................
-  for (let i = 1; i <= Math.ceil(finaldata / DataPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(finaldata / value); i++) {
     pageNumber.push(i);
   }
 
@@ -82,6 +97,23 @@ function ShowSellingData() {
           />
         </div>
       </div>
+      <div className="dropDivrowdata">
+        <select
+          className="dropdownMenuforrowdata"
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+        >
+          {items.map(({ label, value }) => (
+            <option
+              className="OptionsDropDownrowdata"
+              key={value}
+              value={value}
+            >
+              {label}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="showPurchaseBox">
         <Table responsive striped bordered hover>
           <thead className="bodytable">
@@ -101,7 +133,6 @@ function ShowSellingData() {
           <tbody>
             {searchdata.map((Selling) => (
               <tr>
-                
                 {/* <td className="th">{Selling.data.currentUser}</td> */}
                 <th scope="row" className="th">
                   {" "}
@@ -109,8 +140,7 @@ function ShowSellingData() {
                     new Date(Selling.data.sellingdate).toDateString()
                   ).format("DD-MM-YYYY")}
                 </th>
-                
-                
+
                 <td className="th">{Selling.data.billNo}</td>
                 <td className="th">{Selling.data.sellProduct}</td>
                 <td className="th">{Selling.data.partiname}</td>

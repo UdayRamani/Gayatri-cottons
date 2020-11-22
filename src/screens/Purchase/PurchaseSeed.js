@@ -28,7 +28,9 @@ function PurchaseSeed() {
   }, []);
     console.log(CurrentUser);
 
-    const total = weightInput * priceInput / 20;
+    var total = weightInput * priceInput / 20;
+    total = Math.round(total);
+
     console.log("total" + total);
   const handleSubmit = (e) => {
     

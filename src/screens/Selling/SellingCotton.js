@@ -16,7 +16,9 @@ function SellingCotton() {
   const [SellProduct, setSellProduct] = useState("Cotton");
   const [CurrentUser, setCurrentUser] = useState("");
 
-  const total = weightInput * priceInput / 40;
+  var total = weightInput * priceInput / 40;
+  total = Math.round(total);
+
   console.log("total" + total);
 
   useEffect(() => {

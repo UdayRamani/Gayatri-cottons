@@ -16,7 +16,9 @@ function SellingKhol() {
   const [SellProduct, setSellProduct] = useState("Khol");
   const [CurrentUser, setCurrentUser] = useState("");
 
-  const total = weightInput * priceInput / 50;
+  var total = weightInput * priceInput / 50;
+  total = Math.round(total);
+
   console.log("total" + total);
 
   useEffect(() => {

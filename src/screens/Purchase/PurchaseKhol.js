@@ -28,7 +28,9 @@ function PurchaseKhol() {
   }, []);
     console.log(CurrentUser);
 
-    const total = weightInput * priceInput / 50;
+    var total = weightInput * priceInput / 50;
+    total = Math.round(total);
+
     console.log("total" + total);
   const handleSubmit = (e) => {
    

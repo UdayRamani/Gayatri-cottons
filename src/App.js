@@ -10,6 +10,7 @@ import SellingWastage from "./screens/Selling/SellingWastage";
 import SellingSeed from "./screens/Selling/SellingSeed";
 import SellingKhol from "./screens/Selling/SellingKhol";
 
+import UserProfile from './screens/UserProfile';
 import PurchaseCotton from "./screens/Purchase/PurchaseCotton";
 import PurchaseSeed from "./screens/Purchase/PurchaseSeed";
 import PurchaseBelles from "./screens/Purchase/PurchaseBelles";
@@ -50,11 +51,12 @@ function App() {
             <PrivateRoute path="/production" exact component={Production} />
             
             <PrivateRoute path="/SellingCotton" exact component={SellingCotton} />
-            <PrivateRoute path="/SellingBelles" exact component={SellingBelles} />
+            <PrivateRoute path="/Selling" exact component={SellingBelles} />
             <PrivateRoute path="/SellingOil" exact component={SellingOil} />
             <PrivateRoute path="/SellingWastage" exact component={SellingWastage} />
             <PrivateRoute path="/SellingSeed" exact component={SellingSeed} />
             <PrivateRoute path="/SellingKhol" exact component={SellingKhol} />
+            <PrivateRoute path="/UserProfile" exact component={UserProfile} />
 
             <PrivateRoute
               path="/showpurchasedata"

@@ -45,50 +45,33 @@ function Databses() {
   var wastSeed = 0;
   var date;
   serachData.map((purchases) => {
+    if (purchases.data.cottonInput == "Cotton") {
+      date = purchases.data.date;
+      cotton += +purchases.data.weight;
+      cottonBelles += (+purchases.data.weight * 33) / 100;
 
-    if(purchases.data.cottonInput == "Cotton"){
-      
-    date = purchases.data.date;
-    cotton += +purchases.data.weight
-    cottonBelles +=
-      (+(purchases.data.weight) * 33) / 100;
-
-    totalCottonBelles +=
-      (+(purchases.data.weight) * 33) / 100 / 160;
-    totalCottonBelles = Math.round(totalCottonBelles);
-    CottonSeed +=
-      (+(purchases.data.weight) * 66) / 100;
-    westCotton +=
-      (+(purchases.data.weight ) * 1) / 100;
-    oil +=
-      ((((purchases.data.weight ) * 66) / 100) * 10) /
-      100;
-    cottonSeedCake +=
-      +(
-        (((purchases.data.weight ) * 66) / 100) *
-        85
-      ) / 100;
-    wastSeed +=
-      +((((purchases.data.weight) * 66) / 100) * 5) /
-      100;
-  
+      totalCottonBelles += (+purchases.data.weight * 33) / 100 / 160;
+      totalCottonBelles = Math.round(totalCottonBelles);
+      CottonSeed += (+purchases.data.weight * 66) / 100;
+      westCotton += (+purchases.data.weight * 1) / 100;
+      oil += (((purchases.data.weight * 66) / 100) * 10) / 100;
+      cottonSeedCake += +(((purchases.data.weight * 66) / 100) * 85) / 100;
+      wastSeed += +(((purchases.data.weight * 66) / 100) * 5) / 100;
     }
-    });
+  });
 
   return (
     <div className="databases">
       <label className="todaytext">{tidaydate}</label>
 
       {/* <div className="inputsearchbox21"> */}
-        <label className="HeaderTexttitle2">
-          Check Your Production By Date
-        </label>
-        <input
-          type="date"
-          onChange={handleSearch}
-          value={SearchProdusction}
-          className="SearchFiledForProduction"
-        />
+      <label className="HeaderTexttitle2">Check Your Production By Date</label>
+      <input
+        type="date"
+        onChange={handleSearch}
+        value={SearchProdusction}
+        className="SearchFiledForProduction"
+      />
       {/* </div> */}
       <label className="HeaderTexttitle">TOTAL PRODUCTION</label>
 

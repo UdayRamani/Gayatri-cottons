@@ -16,15 +16,28 @@ function Showpurchase() {
 
   const [Current, setCurrent] = useState(1);
   const [DataPerPage, setDataPerPage] = useState(10);
-  const indexOfLastData = Current * DataPerPage;
-  const indexOdFirstData = indexOfLastData - DataPerPage;
-  const currentData = Purchase.slice(indexOdFirstData, indexOfLastData);
-  const pageNumber = [];
-  const finaldata = Purchase.length;
+ 
   const [Search, setSearch] = useState("");
   const [SearchTruck, setSearchTruck] = useState("");
 
-  let searchdata = currentData;
+
+  const [loading, setLoading] = React.useState(true);
+  const [items, setItems] = React.useState([
+    { label: 5, value: 5 },
+    { label: 10, value: 10 },
+    { label: 15, value: 15 },
+    { label: 20, value: 20 },
+    { label: 25, value: 25 },
+  ]);
+  const [value, setValue] = React.useState(5);
+
+  const indexOfLastData = Current * value;
+  const indexOdFirstData = indexOfLastData - value;
+  const currentData = Purchase.slice(indexOdFirstData, indexOfLastData);
+  const pageNumber = [];
+  const finaldata = Purchase.length;
+
+let searchdata = currentData;
 
   // Show Data.....................
 
@@ -78,7 +91,9 @@ function Showpurchase() {
     var disamounts = 0;
     DisData.map((Disdatas) => (disamounts += +Disdatas.data.amountDis));
     console.log(DisData);
-    return <div>{datapurchaseeee - disamounts}</div>;
+    var DisssAmount=datapurchaseeee - disamounts;
+    var totalDisAMount = Math.round(DisssAmount);
+    return <div>{totalDisAMount}</div>;
   }
 
   //Search.............
@@ -105,7 +120,7 @@ function Showpurchase() {
   }
 
   //Pagination...................
-  for (let i = 1; i <= Math.ceil(finaldata / DataPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(finaldata / value); i++) {
     pageNumber.push(i);
   }
   return (
@@ -132,7 +147,23 @@ function Showpurchase() {
           />
         </div>
       </div>
-
+      <div className="dropDivrowdata">
+        <select
+          className="dropdownMenuforrowdata"
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+        >
+          {items.map(({ label, value }) => (
+            <option
+              className="OptionsDropDownrowdata"
+              key={value}
+              value={value}
+            >
+              {label}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="showPurchaseBox">
         <Table responsive striped bordered hover>
           <thead className="bodytable">
