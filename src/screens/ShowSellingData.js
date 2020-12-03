@@ -2,15 +2,10 @@ import React, { useState, useEffect } from "react";
 import { db } from "../config/fire";
 import "../styles/Showpurchase.css";
 import "../styles/ShowSellingData.css";
-
 import moment from "moment";
-import ShowDatevise from "../components/ShowDatevise";
 import Header from "../components/Header.js";
 import { Button, Table } from "react-bootstrap";
-import SearchSelling from "./SearchSelling";
 import DeleteDataSelling from "../components/DeleteDataSelling";
-import { Link } from "react-router-dom";
-import { Select } from "@material-ui/core";
 
 function ShowSellingData() {
   const [Selling, setSelling] = useState([]);
