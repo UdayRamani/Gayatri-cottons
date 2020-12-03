@@ -45,7 +45,7 @@ function Databses() {
   var wastSeed = 0;
   var date;
   serachData.map((purchases) => {
-    if (purchases.data.cottonInput == "Cotton") {
+    if (purchases.data.cottonInput == "cotton") {
       date = purchases.data.date;
       cotton += +purchases.data.weight;
       cottonBelles += (+purchases.data.weight * 33) / 100;

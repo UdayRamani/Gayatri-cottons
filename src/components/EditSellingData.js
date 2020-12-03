@@ -107,7 +107,7 @@ function EditSellingData({ Sellings, SellingID }) {
               value={partynameInput}
               onChange={(e) => setPartyNameInput(e.target.value)}
             />
-            <label className="labletext">Weight</label>
+            <label className="labletext">Weight(kg)</label>
             <input
               type="number"
               className="inputitem"

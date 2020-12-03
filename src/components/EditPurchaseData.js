@@ -119,7 +119,7 @@ function EditPurchaseData({ Purchases, PurchaseID }) {
               onChange={(e) => settruckInput(e.target.value)}
               required
             />
-            <label className="labletext">weight</label>
+            <label className="labletext">weight(kg)</label>
             <input
               type="number"
               className="inputitem"

@@ -123,7 +123,7 @@ function ShowSellingData() {
               <th scope="col">Bill-No</th>
               <th scope="col">Product</th>
               <th scope="col">PartyName</th>
-              <th scope="col">Weight</th>
+              <th scope="col">Weight(kg)</th>
               <th scope="col">Price</th>
               <th scope="col">Total-Rupee</th>
               <th scope="col">BrokerName</th>
@@ -144,7 +144,7 @@ function ShowSellingData() {
                 <td className="th">{Selling.data.billNo}</td>
                 <td className="th">{Selling.data.sellProduct}</td>
                 <td className="th">{Selling.data.partiname}</td>
-                <td className="th">{Selling.data.weight}</td>
+                <td className="th">{Selling.data.weight+" kg"}</td>
                 <td className="th">{Selling.data.price}</td>
                 <td className="th">{Selling.data.totalrupee}</td>
                 <td className="th">{Selling.data.brokername}</td>

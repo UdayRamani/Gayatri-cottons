@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "../../components/Header";
 import { db } from "../../config/fire";
 import "../../styles/Purchase.css";
+import moment from "moment";
 
 function EditDistributAmount(props) {
   const [paymentDatedis, setpaymentDatedis] = useState("");
@@ -93,11 +94,11 @@ function EditDistributAmount(props) {
       <Header />
 
       <div className="purchase">
-        {PurchaseEdit.map((purchases) => (
+        {/* {PurchaseEdit.map((purchases) => (
           <div className="headerdiss">
             DISTRUBUTE AMOUNT IS : {purchases.disamount}
           </div>
-        ))}
+        ))} */}
         <div className="purchasefrom">
           <form>
             <label className="labletext">Add Date</label>
@@ -129,13 +130,13 @@ function EditDistributAmount(props) {
             <div className="paymentDetails">
               <input
                 className="inputitempay"
-                placeholder="check,NEFT Or Case"
+                placeholder="Cheque,NEFT Or Cash"
                 value={paymentdetailsdis}
                 onChange={(e) => setpaymentdetailsdis(e.target.value)}
               />
               <input
                 className="inputitempay"
-                placeholder="Check Number"
+                placeholder="Cheque Number"
                 value={checknumberdis}
                 onChange={(e) => setchecknumberdis(e.target.value)}
               />
@@ -167,7 +168,7 @@ function EditDistributAmount(props) {
                 <h6>Payment-Ditails</h6>
               </th>
               <th scope="col">
-                <h6>Check-Number</h6>
+                <h6>Cheque-Number</h6>
               </th>
               <th scope="col">
                 <h6>Opration</h6>
@@ -177,7 +178,9 @@ function EditDistributAmount(props) {
           <tbody>
             {DisData.map((disdata) => (
               <tr>
-                <td className="th">{disdata.data.paymentDatedis}</td>
+               
+                <td className="th">{ moment(new Date(disdata.data.paymentDatedis).toDateString()).format(
+                    "DD-MM-YYYY")}</td>
                 <td className="th">{disdata.data.farmerNamedis}</td>
                 <td className="th">{disdata.data.amountDis}</td>
                 <td className="th">{disdata.data.paymentDetailsdis}</td>

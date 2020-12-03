@@ -181,7 +181,7 @@ let searchdata = currentData;
                 <h6>Products</h6>
               </th>
               <th scope="col">
-                <h6>Weight</h6>
+                <h6>Weight(kg)</h6>
               </th>
               {/* <th scope="col">
                 <h6>Out Weight</h6>
@@ -227,9 +227,7 @@ let searchdata = currentData;
                 </th>
                 <td className="th">{purchases.data.trucknumber}</td>
                 <td className="th">{purchases.data.cottonInput}</td>
-
-                <td className="th">{purchases.data.weight}</td>
-
+                <td className="th">{purchases.data.weight+" kg"}</td>
                 {/* <td className="th">
                   <ShowDatevise Purchase={purchases} />
                 </td> */}

@@ -20,11 +20,11 @@ function SellingBelles() {
     const [loading, setLoading] = React.useState(true);
     const [items, setItems] = React.useState([
       { label: "cotton", value: "cotton" },
-      { label: "belles", value: "belles" },
-      { label: "seed", value: "seed" },
-      { label: "khol", value: "khol" },
+      { label: "bales", value: "bales" },
+      { label: "seed(Kapasiya)", value: "seed" },
+      { label: "khod (cotton Seed Cake)", value: "khod" },
       { label: "oil", value: "oil" },
-      { label: "wastage", value: "wastage" },
+      { label: "wastage(Bagdu)", value: "wastage" },
     ]);
     
     const [value, setValue] = React.useState("R2-D2");
@@ -39,20 +39,20 @@ function SellingBelles() {
       itemcotton = "BELLES";
       total = (weightInput * priceInput * 0.2812) / 100;
     }
-    if (value == "seed") {
-      itemcotton = "SEED";
+    if (value == "seed(Kapasiya)") {
+      itemcotton = "SEED(kapasiya)";
       total = weightInput * priceInput / 20;
     }
-    if (value == "khol") {
-      itemcotton = "KHOL";
+    if (value == "khod (cotton Seed Cake)") {
+      itemcotton = "KHOD (cotton Seed Cake)";
       total = weightInput * priceInput / 50;
     }
     if (value == "oil") {
       itemcotton = "OIL";
       total = weightInput * priceInput / 10;
     }
-    if (value == "wastage") {
-      itemcotton = "WASTAGE";
+    if (value == "wastage(Bagdu)") {
+      itemcotton = "WASTAGE(Bagdu)";
       total = weightInput * priceInput;
     }
 
